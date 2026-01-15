@@ -1,0 +1,8 @@
+export { default as Header } from './Header'
+export { default as Hero } from './Hero'
+export { default as TextSection } from './TextSection'
+export { default as FeatureSection } from './FeatureSection'
+export { default as ServicesGrid } from './ServicesGrid'
+export { default as Testimonials } from './Testimonials'
+export { default as ContactForm } from './ContactForm'
+export { default as Footer } from './Footer'
