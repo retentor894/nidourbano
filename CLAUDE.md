@@ -92,3 +92,54 @@ Las variables están en `frontend/src/styles/global.css`:
 - CSS con nomenclatura BEM: `.component__element--modifier`
 - Props con valores por defecto para modularidad
 - Archivos de componentes en PascalCase
+
+## Docker
+
+El proyecto está completamente dockerizado para facilitar el despliegue.
+
+### Estructura Docker
+```
+nidourbano/
+├── docker-compose.yml       # Producción
+├── docker-compose.dev.yml   # Desarrollo
+├── .env.example             # Variables de entorno
+├── frontend/
+│   ├── Dockerfile           # Build producción (nginx)
+│   ├── Dockerfile.dev       # Desarrollo con hot-reload
+│   ├── nginx.conf           # Configuración nginx
+│   └── .dockerignore
+└── backend/
+    ├── Dockerfile           # Build producción
+    ├── Dockerfile.dev       # Desarrollo con hot-reload
+    └── .dockerignore
+```
+
+### Comandos Docker
+
+**Producción:**
+```bash
+# Construir y levantar
+docker compose up -d --build
+
+# Ver logs
+docker compose logs -f
+
+# Detener
+docker compose down
+```
+
+**Desarrollo (con hot-reload):**
+```bash
+# Levantar entorno de desarrollo
+docker compose -f docker-compose.dev.yml up --build
+
+# Detener
+docker compose -f docker-compose.dev.yml down
+```
+
+### Puertos
+
+| Servicio | Desarrollo | Producción |
+|----------|------------|------------|
+| Frontend | 3000 | 80 |
+| Backend | 5000 | 5000 |
